@@ -6,6 +6,7 @@ parameters:
     ezpublish.fieldType.ezxmltext.converter.ezLinkToHtml5.class: eZ\Publish\Core\FieldType\XmlText\Converter\EzLinkToHtml5
     ezpublish.fieldType.ezxmltext.converter.expanding.class: eZ\Publish\Core\FieldType\XmlText\Converter\Expanding
     ezpublish.fieldType.ezxmltext.converter.embedLinking.class: eZ\Publish\Core\FieldType\XmlText\Converter\EmbedLinking
+    ezpublish.fieldType.ezxmltext.converter.customTagExercise.class: WhatsCoach\DesignBundle\Converter\XmlText\ExercisePreConverter
 
 services:
     ezpublish.fieldType.ezxmltext.converter.html5:
@@ -43,3 +44,9 @@ services:
             - @?logger
         tags:
             - { name: ezpublish.ezxml.converter, priority: 8 }
+
+    ezpublish.fieldType.ezxmltext.converter.customTagExercise:
+        class: "%ezpublish.fieldType.ezxmltext.converter.customTagExercise.class%"
+        arguments: ["@service_container"]
+        tags:
+            - { name: ezpublish.ezxml.converter, priority: 12 }
